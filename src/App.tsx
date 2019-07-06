@@ -1,26 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { CardList } from "./components/card-list/card-list.component";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export interface ICharacter {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
+  image: string;
+  episode: Array<string>;
+  url: string;
+  created: string;
+}
+
+export class App extends React.Component<
+  {},
+  { characters: ICharacter[]; search: string }
+> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      characters: [],
+      search: "mit"
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://rickandmortyapi.com/api/character/")
+      .then(response => response.json())
+      .then(json_response => {
+        this.setState({ characters: json_response.results });
+      });
+  }
+  render() {
+    return (
+      <div className="App">
+        <CardList
+          characters={
+            this.state.search
+              ? this.state.characters.filter(character =>
+                  character.name.includes(this.state.search)
+                )
+              : this.state.characters
+          }
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
