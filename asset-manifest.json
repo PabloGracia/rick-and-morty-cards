@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/rick-and-morty-cards/static/css/main.46e4a8a8.chunk.css",
+    "main.js": "/rick-and-morty-cards/static/js/main.b9ae7168.chunk.js",
+    "main.js.map": "/rick-and-morty-cards/static/js/main.b9ae7168.chunk.js.map",
+    "runtime~main.js": "/rick-and-morty-cards/static/js/runtime~main.be9720af.js",
+    "runtime~main.js.map": "/rick-and-morty-cards/static/js/runtime~main.be9720af.js.map",
+    "static/js/2.27e9ad4f.chunk.js": "/rick-and-morty-cards/static/js/2.27e9ad4f.chunk.js",
+    "static/js/2.27e9ad4f.chunk.js.map": "/rick-and-morty-cards/static/js/2.27e9ad4f.chunk.js.map",
+    "index.html": "/rick-and-morty-cards/index.html",
+    "precache-manifest.3ec97f3fb611de2b79cc01a64216a88f.js": "/rick-and-morty-cards/precache-manifest.3ec97f3fb611de2b79cc01a64216a88f.js",
+    "service-worker.js": "/rick-and-morty-cards/service-worker.js",
+    "static/css/main.46e4a8a8.chunk.css.map": "/rick-and-morty-cards/static/css/main.46e4a8a8.chunk.css.map"
+  }
+}
