@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { CardList } from "./components/card-list/card-list.component";
+import { SearchBox } from "./components/search-box/search-box.component";
 
 export interface ICharacter {
   id: number;
@@ -30,9 +31,14 @@ export class App extends React.Component<
     super(props);
     this.state = {
       characters: [],
-      search: "mit"
+      search: ""
     };
+    this.handleInputChange.bind(this);
   }
+
+  handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ search: event.target.value });
+  };
 
   componentDidMount() {
     fetch("https://rickandmortyapi.com/api/character/")
@@ -44,11 +50,16 @@ export class App extends React.Component<
   render() {
     return (
       <div className="App">
+        <h1>Rick and Morty Rolodex</h1>
+        <SearchBox
+          placeholder="Search character"
+          handleChange={this.handleInputChange}
+        />
         <CardList
           characters={
             this.state.search
               ? this.state.characters.filter(character =>
-                  character.name.includes(this.state.search)
+                  character.name.toLocaleLowerCase().includes(this.state.search)
                 )
               : this.state.characters
           }
